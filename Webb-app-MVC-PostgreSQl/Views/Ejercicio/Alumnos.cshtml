@@ -8,8 +8,11 @@
 <h1>@ViewBag.Title</h1>
 <br />
 <br />
-if(Model != null) {
+@if(Model != null) {
     <select id="selAlumnos">
         <option value="0">Selecciona al Alumno deseado</option>
+        @foreach(Webb_app_MVC_PostgreSQL_DAL.Modelos.EjemploAlumno alumnos in Model) {
+            <option value="@alumnos.Id">@alumnos.AlumnoNombre</option>
+        }
     </select>
 }

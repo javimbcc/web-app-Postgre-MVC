@@ -14,7 +14,8 @@ namespace Webb_app_MVC_PostgreSQl.Controllers
 
         public ActionResult Alumnos()
         {
-            return View();
+            var alumnos = db.EjemploAlumnos.ToList();
+            return View(alumnos);
         }
 
 
