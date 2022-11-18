@@ -9,10 +9,21 @@
 <br />
 <br />
 @if(Model != null) {
-    <select id="selAlumnos">
-        <option value="0">Selecciona al Alumno deseado</option>
-        @foreach(Webb_app_MVC_PostgreSQL_DAL.Modelos.EjemploAlumno alumnos in Model) {
-            <option value="@alumnos.Id">@alumnos.AlumnoNombre</option>
-        }
-    </select>
+    using (Html.BeginForm()) {
+        <select id="selAlumnos" onchange="SetAsignatura(this.value)">
+            <option value="0">Selecciona al Alumno deseado</option>
+            @foreach (Webb_app_MVC_PostgreSQL_DAL.Modelos.EjemploAlumno alumnos in Model)
+            {
+                <option value="@alumnos.IdAsignatura">@alumnos.AlumnoNombre</option>
+            }
+        </select>
+
+        <input type="submit" value="Buscar Asignatura" />
+        <input type="hidden" id="IdAsignatura" name="IdAsignatura" value=1/>
+    }
 }
+<script>
+    Function SetAsignatura(id) {
+        document.getElementById("IdAsignatura").value = id;
+    }
+</script>

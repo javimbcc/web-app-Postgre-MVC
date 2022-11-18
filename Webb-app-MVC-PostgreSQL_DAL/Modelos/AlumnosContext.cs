@@ -15,6 +15,8 @@ public partial class AlumnosContext : DbContext
     {
     }
 
+    public virtual DbSet<Asignatura> Asignaturas { get; set; }
+
     public virtual DbSet<EjemploAlumno> EjemploAlumnos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -23,6 +25,20 @@ public partial class AlumnosContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Asignatura>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("Asignaturas_pkey");
+
+            entity.ToTable("Asignaturas", "EjemploRutas", tb => tb.HasComment("Entidad que regula las asignaturas de los alumnos"));
+
+            entity.Property(e => e.Id)
+                .UseIdentityAlwaysColumn()
+                .HasColumnName("id");
+            entity.Property(e => e.NombreAsignatura)
+                .HasColumnType("character varying")
+                .HasColumnName("nombre_asignatura");
+        });
+
         modelBuilder.Entity<EjemploAlumno>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("ejemploAlumno_pkey");
@@ -30,6 +46,7 @@ public partial class AlumnosContext : DbContext
             entity.ToTable("ejemploAlumno", "EjemploRutas", tb => tb.HasComment("Entidad de ejemplo para los alumnos"));
 
             entity.Property(e => e.Id)
+                .ValueGeneratedOnAdd()
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("id");
             entity.Property(e => e.AlumnoApellido)
@@ -41,6 +58,12 @@ public partial class AlumnosContext : DbContext
             entity.Property(e => e.AlumnoNombre)
                 .HasColumnType("character varying")
                 .HasColumnName("alumno_nombre");
+            entity.Property(e => e.IdAsignatura).HasColumnName("id_asignatura");
+
+            entity.HasOne(d => d.IdNavigation).WithOne(p => p.EjemploAlumno)
+                .HasForeignKey<EjemploAlumno>(d => d.Id)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("id_asignatura");
         });
 
         OnModelCreatingPartial(modelBuilder);

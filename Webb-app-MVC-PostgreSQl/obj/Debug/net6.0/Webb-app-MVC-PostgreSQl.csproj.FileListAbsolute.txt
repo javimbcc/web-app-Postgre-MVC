@@ -49,3 +49,5 @@ C:\Users\javi\source\repos\Webb-app-MVC-PostgreSQl\Webb-app-MVC-PostgreSQl\bin\D
 C:\Users\javi\source\repos\Webb-app-MVC-PostgreSQl\Webb-app-MVC-PostgreSQl\bin\Debug\net6.0\Webb-app-MVC-PostgreSQL_DAL.dll
 C:\Users\javi\source\repos\Webb-app-MVC-PostgreSQl\Webb-app-MVC-PostgreSQl\bin\Debug\net6.0\Webb-app-MVC-PostgreSQL_DAL.pdb
 C:\Users\javi\source\repos\Webb-app-MVC-PostgreSQl\Webb-app-MVC-PostgreSQl\obj\Debug\net6.0\Webb-app-MVC-PostgreSQl.csproj.CopyComplete
+C:\Users\javi\source\repos\Webb-app-MVC-PostgreSQl\Webb-app-MVC-PostgreSQl\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\javi\source\repos\Webb-app-MVC-PostgreSQl\Webb-app-MVC-PostgreSQl\bin\Debug\net6.0\Newtonsoft.Json.dll

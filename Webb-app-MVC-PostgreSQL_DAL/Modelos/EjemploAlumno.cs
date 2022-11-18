@@ -15,4 +15,8 @@ public partial class EjemploAlumno
     public string AlumnoApellido { get; set; } = null!;
 
     public string AlumnoApellido2 { get; set; } = null!;
+
+    public long? IdAsignatura { get; set; }
+
+    public virtual Asignatura IdNavigation { get; set; } = null!;
 }
